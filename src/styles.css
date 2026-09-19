@@ -155,8 +155,44 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility panel {
+  border-radius: var(--radius-3xl);
+  background-color: color-mix(in oklab, var(--surface) 70%, transparent);
+  box-shadow: 0 0 0 1px oklch(0 0 0 / 5%);
+  backdrop-filter: blur(12px);
+}
+
+@utility ambient-glow {
+  background: radial-gradient(
+    120% 100% at 50% -10%,
+    color-mix(in oklab, var(--transport) 18%, var(--mist)) 0%,
+    var(--mist) 45%,
+    var(--mist) 100%
+  );
+}
+
+@utility section-flash {
+  animation: section-flash 1.6s ease-out;
+}
+
+@keyframes section-flash {
+  0% {
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--transport) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 1px oklch(0 0 0 / 5%);
   }
 }
